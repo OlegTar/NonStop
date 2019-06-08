@@ -86,14 +86,16 @@ namespace Application.ApiControllers
 
         // POST: api/Documents
         [HttpPost]
-        public async Task<ActionResult<DocumentViewModel>> PostDocument(DocumentViewModel documentViewModel)
+        public async Task<ActionResult<DocumentViewModel>> PostDocument(int DocumentTypeId, IFormFile file)
         {
-            var document = _mapper.Map<Document>(documentViewModel);
-
-            _context.Documents.Add(document);
             await _context.SaveChangesAsync();
+            //var document = _mapper.Map<Document>(documentViewModel);
 
-            return CreatedAtAction("GetDocument", new { id = document.Id }, documentViewModel);
+            //_context.Documents.Add(document);
+            //await _context.SaveChangesAsync();
+
+            //return CreatedAtAction("GetDocument", new { id = document.Id }, documentViewModel);
+            return CreatedAtAction("GetDocument", new { id = 1 }, new DocumentViewModel() { });
         }
 
         // DELETE: api/Documents/5

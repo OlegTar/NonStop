@@ -20,6 +20,8 @@
     <Compile Remove="Migrations\20190608143020_feedback.Designer.cs" />
     <Compile Remove="Migrations\20190608153443_Post.cs" />
     <Compile Remove="Migrations\20190608153443_Post.Designer.cs" />
+    <Compile Remove="Migrations\20190608173526_spec-number-seats.cs" />
+    <Compile Remove="Migrations\20190608173526_spec-number-seats.Designer.cs" />
   </ItemGroup>
 
 
