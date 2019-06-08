@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { DataService } from 'src/app/service/data.service';
+
 @Component({
   selector: 'app-university-filter',
   templateUrl: './university-filter.component.html',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UniversityFilterComponent implements OnInit {
 
-  constructor() { }
+  constructor(protected dataService: DataService) { }
 
   ngOnInit() {
+    this.getData();
+  }
+
+  private getData() {
+    this.dataService.getUniversities().subscribe(res => {
+      console.log(res);
+    });
   }
 
 }
