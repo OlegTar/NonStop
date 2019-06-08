@@ -1,30 +1,37 @@
 <div class="grid-container">
-    <mat-grid-list cols="2" rowHeight="150px">
-      <mat-grid-tile *ngFor="let card of cards" [colspan]="2" [rowspan]="1">
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              {{card.name}}
-              <button mat-icon-button class="more-button"
-                [matMenuTriggerFor]="menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #menu="matMenu" xPosition="before">
-                <button mat-menu-item>Закрой обратно!</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-            <section>{{card.description}}</section>
-            <section>
+  <mat-grid-list cols="2" rowHeight="250px">
+    <mat-grid-tile *ngFor="let u of universities" [colspan]="2" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{u.name}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Закрой обратно!</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <span>Направления обучения:</span>
+          <label *ngFor="let s of u.specializations; let i = index;">
+            {{s.name}}
+            <label *ngIf="i < u.specializations.length">, </label>
+          </label>
+          <section class="Row">
+            <section class="Column">
               <button mat-raised-button color="primary">Перейти на сайт</button>
             </section>
-            <button mat-button>
+            <section class="Column">
+              <button mat-button>
                 <mat-icon>star_border</mat-icon>
                 <span>Добавить в сравнение</span>
               </button>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </mat-grid-list>
-  </div>
+            </section>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
