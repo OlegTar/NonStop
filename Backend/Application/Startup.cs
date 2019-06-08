@@ -36,7 +36,6 @@ namespace Application
             services.AddDbContext<NonStopContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddOpenApiDocument();
-            services.AddSwaggerDocument();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
