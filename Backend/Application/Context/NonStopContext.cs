@@ -38,6 +38,6 @@ namespace Application.Context
         public DbSet<Tag> Tags { get; set; }
 
         public DbSet<Document> Documents { get; set; }
-
+        public DbSet<DocumentType> DocumentType { get; set; }
     }
 }
