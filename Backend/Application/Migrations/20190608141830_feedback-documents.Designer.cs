@@ -4,14 +4,16 @@ using Application.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Application.Migrations
 {
     [DbContext(typeof(NonStopContext))]
-    partial class NonStopContextModelSnapshot : ModelSnapshot
+    [Migration("20190608141830_feedback-documents")]
+    partial class feedbackdocuments
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,21 +53,6 @@ namespace Application.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DocumentType");
-                });
-
-            modelBuilder.Entity("Application.Models.Feedback", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Comment");
-
-                    b.Property<int>("UnivercityId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("Application.Models.Person", b =>
@@ -221,7 +208,7 @@ namespace Application.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("UnivercitySpecializations");
+                    b.ToTable("UnivercitySpecialization");
                 });
 
             modelBuilder.Entity("Application.Models.Document", b =>
