@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Application.Context;
 using Application.Models;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Application.ApiControllers
 {
@@ -25,7 +26,37 @@ namespace Application.ApiControllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Univercity>>> GetUnivercities()
         {
-            return await _context.Univercities.ToListAsync();
+            var specs = new Dictionary<int, List<Specialization>>();
+            var univercitiesSet = new HashSet<int>();
+            var univercities = new List<Univercity>();
+
+            var univercitySpecializations = await (from u in _context.Univercities
+                                join us in _context.UnivercitySpecializations on u.Id equals us.UnivercityId
+                                join s in _context.Specializations on us.SpecializationId equals s.Id
+                                select new
+                                {
+                                    Univercity = u,
+                                    Specialization = s,
+                                }).ToListAsync();
+            foreach (var univercitySpecialization in univercitySpecializations) {
+                if (!specs.ContainsKey(univercitySpecialization.Univercity.Id))
+                {
+                    specs.Add(univercitySpecialization.Univercity.Id, new List<Specialization>());
+                }
+                specs[univercitySpecialization.Univercity.Id].Add(univercitySpecialization.Specialization);
+                if (!univercitiesSet.Contains(univercitySpecialization.Univercity.Id))
+                {
+                    univercitiesSet.Add(univercitySpecialization.Univercity.Id);
+                    univercities.Add(univercitySpecialization.Univercity);
+                }
+            }
+
+            foreach (var univercity in univercities)
+            {
+                univercity.Specializations = specs[univercity.Id];
+            }
+
+            return univercities;
         }
 
         // GET: api/Univercities/5
