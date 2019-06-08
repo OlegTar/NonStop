@@ -18,6 +18,8 @@
     <Compile Remove="Migrations\20190608142838_feedback.Designer.cs" />
     <Compile Remove="Migrations\20190608143020_feedback.cs" />
     <Compile Remove="Migrations\20190608143020_feedback.Designer.cs" />
+    <Compile Remove="Migrations\20190608153443_Post.cs" />
+    <Compile Remove="Migrations\20190608153443_Post.Designer.cs" />
   </ItemGroup>
 
 
