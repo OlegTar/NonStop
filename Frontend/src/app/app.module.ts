@@ -16,12 +16,14 @@ import { FooterComponent } from './common/footer/footer.component';
 import { LinksComponent } from './common/links/links.component';
 import { RatingComponent } from './rating/rating.component';
 import { GeneralComponent } from './general/general.component';
+import { LoginComponent } from './login/login.component';
 
 const appRoutes: Routes = [
   { path: 'general', component: GeneralComponent },
   { path: 'university', component: UniversityComponent },
   { path: 'mydocs', component: DocumentsComponent },
-  { path: 'rating', component: RatingComponent }
+  { path: 'rating', component: RatingComponent },
+  { path: 'login', component: LoginComponent }
 ];
 
 @NgModule({
@@ -36,7 +38,8 @@ const appRoutes: Routes = [
     FooterComponent,
     LinksComponent,
     RatingComponent,
-    GeneralComponent
+    GeneralComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
