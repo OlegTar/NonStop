@@ -16,7 +16,10 @@ import { FooterComponent } from './common/footer/footer.component';
 import { LinksComponent } from './common/links/links.component';
 import { RatingComponent } from './rating/rating.component';
 import { GeneralComponent } from './general/general.component';
+<<<<<<< Updated upstream
 import { LoginComponent } from './login/login.component';
+=======
+>>>>>>> Stashed changes
 import { CommisionComponent } from './commision/commision.component';
 
 const appRoutes: Routes = [
@@ -24,8 +27,12 @@ const appRoutes: Routes = [
   { path: 'university', component: UniversityComponent },
   { path: 'mydocs', component: DocumentsComponent },
   { path: 'rating', component: RatingComponent },
+<<<<<<< Updated upstream
   { path: 'login', component: LoginComponent },
   { path: 'commision', component: CommisionComponent },
+=======
+  { path: 'commision', component: CommisionComponent }
+>>>>>>> Stashed changes
 ];
 
 @NgModule({
@@ -41,8 +48,12 @@ const appRoutes: Routes = [
     LinksComponent,
     RatingComponent,
     GeneralComponent,
+<<<<<<< Updated upstream
     LoginComponent,
     CommisionComponent,
+=======
+    CommisionComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

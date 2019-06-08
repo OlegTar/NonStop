@@ -1,18 +1,7 @@
 table {
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 140px;
+    width: 28%;
+    table-layout: fixed;
+    margin-left: 36%;
+    margin-top: 50px;
+    box-shadow: 0 0 0px;
   }
-#search-form-left {
-    width: 60%;
-    margin-left: 10%;
-    margin-top: 30px;
-  }
-
-#search-form-right {
-    width: 60%;
-    margin-left: 60%;
-    margin-top: 0px;
-  }
-
-  
