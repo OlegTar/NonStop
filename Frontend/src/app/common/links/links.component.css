@@ -1,0 +1,17 @@
+.Row {
+    display: flex;
+    width: 100%;
+    margin-top: 50px;
+}
+.Column {
+    flex: 0 50%;
+    cursor: pointer;
+}
+
+.Container {
+    margin: 50px 50px;
+}
+
+a a:hover, a:visited, a:link, a:active{
+    text-decoration: none;
+}

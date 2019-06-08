@@ -1,0 +1,10 @@
+.Row {
+    display: flex;
+    width: 100%;
+}
+.LinksColumn {
+    flex: 0 60%;
+}
+.InfoColumn {
+    flex: 0 40%;
+}

@@ -1,0 +1,29 @@
+<mat-sidenav-container>
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="'dialog'" [mode]="'over'" [opened]="false">
+    <section class="Close">
+      <button mat-button (click)="drawer.toggle()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </section>
+    <section class="Exit">
+      Выйти
+    </section>
+    <section class="User">
+      User User
+    </section>
+    <app-links></app-links>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span class="spacer"></span>
+        <span>Онлайн абитуриент</span>
+        <span class="spacer"></span>
+        <span>Войти</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
