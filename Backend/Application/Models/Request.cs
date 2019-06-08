@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 
 namespace Application.Models
 {
-    public class UnivercitySpecialization
+    public class Request
     {
-        public int UnivercityId { get; set; }
+        public int Id { get; set; }
+        public Person Person { get; set; }
         public Univercity Univercity { get; set; }
-        public int SpecializationId { get; set; }
         public Specialization Specialization { get; set; }
+        public bool Verified { get; set; }
+        public string Comment { get; set; }
+
     }
 }

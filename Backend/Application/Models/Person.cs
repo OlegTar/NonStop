@@ -13,5 +13,7 @@ namespace Application.Models
         public string PatronymicName { get; set; }
         public DateTime BirthDate { get; set; }
         public Univercity Univercity { get; set; }
+
+        public IList<Document> Documents { get; set; }
     }
 }
