@@ -38,9 +38,7 @@ namespace Application.Context
         public DbSet<Tag> Tags { get; set; }
 
         public DbSet<Document> Documents { get; set; }
-
+        public DbSet<DocumentType> DocumentType { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
-        public DbSet<Application.Models.UnivercitySpecialization> UnivercitySpecialization { get; set; }
-
     }
 }
