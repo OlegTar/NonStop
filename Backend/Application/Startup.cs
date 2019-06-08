@@ -59,6 +59,11 @@ namespace Application
             app.UseSwagger();
             app.UseSwaggerUi3();
 
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost:4200", "https://localhost:44314")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod());
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
