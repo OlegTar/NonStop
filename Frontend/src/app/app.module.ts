@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatButtonModule, MatCheckboxModule, MatInputModule, MatToolbarModule } from '@angular/material';
+import { DocumentsComponent } from './documents/documents.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DocumentsComponent
   ],
   imports: [
     BrowserModule,
