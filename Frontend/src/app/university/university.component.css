@@ -1,0 +1,10 @@
+.Row {
+    display: flex;
+    width: 100%;
+}
+.FilterColumn {
+    flex: 0 30%;
+}
+.ListColumn {
+    flex: 0 70%;
+}

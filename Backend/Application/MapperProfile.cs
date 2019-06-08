@@ -12,8 +12,7 @@ namespace Application
     {
         public MapperProfile()
         {
-            CreateMap<Document, DocumentViewModel>();
-            CreateMap<DocumentViewModel, Document>();
+           
         }
     }
 }

@@ -9,6 +9,7 @@ using Application.Context;
 using Application.Models;
 using AutoMapper;
 using Application.ViewModels;
+using System.IO;
 
 namespace Application.ApiControllers
 {
@@ -32,10 +33,10 @@ namespace Application.ApiControllers
 
         // GET: api/Documents
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DocumentViewModel>>> GetDocuments()
+        public async Task<ActionResult<IEnumerable<Document>>> GetDocuments()
         {
             var documents = await _context.Documents.ToListAsync();
-            var documentViewModels = _mapper.Map<List<DocumentViewModel>>(documents);
+            var documentViewModels = _mapper.Map<List<Document>>(documents);
 
             return documentViewModels;
         }
@@ -55,13 +56,10 @@ namespace Application.ApiControllers
         }
 
         // PUT: api/Documents/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDocument(int id, Document document)
+        [HttpPost("{id}/{documentTypeId}/{personId}")]
+        public async Task<IActionResult> PutDocument(int id, int documentTypeId, int personId, IFormFile file)
         {
-            if (id != document.Id)
-            {
-                return BadRequest();
-            }
+            var document = await _context.Documents.FindAsync(id);
 
             _context.Entry(document).State = EntityState.Modified;
 
@@ -85,17 +83,27 @@ namespace Application.ApiControllers
         }
 
         // POST: api/Documents
-        [HttpPost]
-        public async Task<ActionResult<DocumentViewModel>> PostDocument(int DocumentTypeId, IFormFile file)
+        [HttpPost("{documentTypeId}/{personId}")]
+        public async Task<ActionResult<Document>> PostDocument(int documentTypeId, int personId, IFormFile file)
         {
             await _context.SaveChangesAsync();
-            //var document = _mapper.Map<Document>(documentViewModel);
+            var document = new Document
+            {
+                DocumentTypeId = documentTypeId,
+                PersonId = personId,
 
-            //_context.Documents.Add(document);
-            //await _context.SaveChangesAsync();
+            };
 
-            //return CreatedAtAction("GetDocument", new { id = document.Id }, documentViewModel);
-            return CreatedAtAction("GetDocument", new { id = 1 }, new DocumentViewModel() { });
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                document.Image = memoryStream.ToArray();
+            }
+
+            _context.Documents.Add(document);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetDocument", new { id = document.Id }, document);
         }
 
         // DELETE: api/Documents/5
