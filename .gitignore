@@ -1,0 +1,4 @@
+/Backend/Application/obj/*
+/Backend/Application/bin/*
+/Backend/.vs/*
+/.vs/*
