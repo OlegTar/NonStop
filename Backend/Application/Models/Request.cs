@@ -11,7 +11,7 @@ namespace Application.Models
         public Person Person { get; set; }
         public Univercity Univercity { get; set; }
         public Specialization Specialization { get; set; }
-        public bool Verified { get; set; }
+        public RequestStatus Status { get; set; }
         public string Comment { get; set; }
 
     }
