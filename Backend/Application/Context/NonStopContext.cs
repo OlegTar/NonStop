@@ -26,5 +26,14 @@ namespace Application.Context
         public DbSet<Person> Persons { get; set; }
         public DbSet<Univercity> Univercities { get; set; }
         public DbSet<Specialization> Specializations { get; set; }
+
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<PointsBySubject> PointsBySubjects { get; set; }
+
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<Document> Documents { get; set; }
+
     }
 }
