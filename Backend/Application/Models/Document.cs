@@ -10,6 +10,6 @@ namespace Application.Models
         public int Id { get; set; }
         public Person Person { get; set; }
         public byte[] Image { get; set; } 
-
+        public DocumentType DocumentType { get; set; }
     }
 }

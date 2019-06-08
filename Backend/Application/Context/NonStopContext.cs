@@ -20,7 +20,8 @@ namespace Application.Context
 
             modelBuilder.Entity<UnivercitySpecialization>()
                 .HasKey(us => new { us.UnivercityId, us.SpecializationId });
-
+            modelBuilder.Entity<Univercity>()
+                .HasAlternateKey(us => us.Name);
         }
 
         public DbSet<Person> Persons { get; set; }

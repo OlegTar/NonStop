@@ -4,14 +4,16 @@ using Application.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Application.Migrations
 {
     [DbContext(typeof(NonStopContext))]
-    partial class NonStopContextModelSnapshot : ModelSnapshot
+    [Migration("20190608122631_univercity-name-string")]
+    partial class univercitynamestring
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,32 +27,15 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("DocumentTypeId");
-
                     b.Property<byte[]>("Image");
 
                     b.Property<int?>("PersonId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DocumentTypeId");
-
                     b.HasIndex("PersonId");
 
                     b.ToTable("Documents");
-                });
-
-            modelBuilder.Entity("Application.Models.DocumentType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DocumentType");
                 });
 
             modelBuilder.Entity("Application.Models.Person", b =>
@@ -183,12 +168,9 @@ namespace Application.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
+                    b.Property<string>("Name");
 
                     b.HasKey("Id");
-
-                    b.HasAlternateKey("Name");
 
                     b.ToTable("Univercities");
                 });
@@ -208,10 +190,6 @@ namespace Application.Migrations
 
             modelBuilder.Entity("Application.Models.Document", b =>
                 {
-                    b.HasOne("Application.Models.DocumentType", "DocumentType")
-                        .WithMany()
-                        .HasForeignKey("DocumentTypeId");
-
                     b.HasOne("Application.Models.Person", "Person")
                         .WithMany("Documents")
                         .HasForeignKey("PersonId");
