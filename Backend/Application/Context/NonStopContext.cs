@@ -39,5 +39,6 @@ namespace Application.Context
 
         public DbSet<Document> Documents { get; set; }
         public DbSet<DocumentType> DocumentType { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

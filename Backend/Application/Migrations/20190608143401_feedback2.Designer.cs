@@ -4,14 +4,16 @@ using Application.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Application.Migrations
 {
     [DbContext(typeof(NonStopContext))]
-    partial class NonStopContextModelSnapshot : ModelSnapshot
+    [Migration("20190608143401_feedback2")]
+    partial class feedback2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,9 +63,11 @@ namespace Application.Migrations
 
                     b.Property<string>("Comment");
 
-                    b.Property<int>("UnivercityId");
+                    b.Property<int?>("UnivercityId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UnivercityId");
 
                     b.ToTable("Feedbacks");
                 });
@@ -221,7 +225,7 @@ namespace Application.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("UnivercitySpecializations");
+                    b.ToTable("UnivercitySpecialization");
                 });
 
             modelBuilder.Entity("Application.Models.Document", b =>
@@ -233,6 +237,13 @@ namespace Application.Migrations
                     b.HasOne("Application.Models.Person", "Person")
                         .WithMany("Documents")
                         .HasForeignKey("PersonId");
+                });
+
+            modelBuilder.Entity("Application.Models.Feedback", b =>
+                {
+                    b.HasOne("Application.Models.Univercity", "Univercity")
+                        .WithMany()
+                        .HasForeignKey("UnivercityId");
                 });
 
             modelBuilder.Entity("Application.Models.Person", b =>
