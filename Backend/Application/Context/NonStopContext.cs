@@ -20,12 +20,16 @@ namespace Application.Context
 
             modelBuilder.Entity<UnivercitySpecialization>()
                 .HasKey(us => new { us.UnivercityId, us.SpecializationId });
-
+            modelBuilder.Entity<Univercity>()
+                .HasAlternateKey(us => us.Name);
+            modelBuilder.Entity<Specialization>()
+                .HasAlternateKey(sp => sp.Code);
         }
 
         public DbSet<Person> Persons { get; set; }
         public DbSet<Univercity> Univercities { get; set; }
         public DbSet<Specialization> Specializations { get; set; }
+        public DbSet<UnivercitySpecialization> UnivercitySpecializations { get; set; }
 
         public DbSet<Request> Requests { get; set; }
         public DbSet<PointsBySubject> PointsBySubjects { get; set; }
@@ -34,6 +38,7 @@ namespace Application.Context
         public DbSet<Tag> Tags { get; set; }
 
         public DbSet<Document> Documents { get; set; }
-
+        public DbSet<DocumentType> DocumentType { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
     }
 }

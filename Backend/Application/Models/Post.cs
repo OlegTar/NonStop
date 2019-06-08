@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Application.Models
 {
-    public class Specialization
+    public class Post
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Code { get; set; }
-        public int NumberSeats { get; set; }
+        public string Header { get; set; }
+
+        public string Content { get; set; }
     }
 }

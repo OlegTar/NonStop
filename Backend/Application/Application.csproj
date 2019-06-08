@@ -14,14 +14,23 @@
     <Compile Remove="Migrations\20190608112946_applications-documents.Designer.cs" />
     <Compile Remove="Migrations\20190608113125_applications-documents.cs" />
     <Compile Remove="Migrations\20190608113125_applications-documents.Designer.cs" />
+    <Compile Remove="Migrations\20190608142838_feedback.cs" />
+    <Compile Remove="Migrations\20190608142838_feedback.Designer.cs" />
+    <Compile Remove="Migrations\20190608143020_feedback.cs" />
+    <Compile Remove="Migrations\20190608143020_feedback.Designer.cs" />
+    <Compile Remove="Migrations\20190608153443_Post.cs" />
+    <Compile Remove="Migrations\20190608153443_Post.Designer.cs" />
+    <Compile Remove="Migrations\20190608173526_spec-number-seats.cs" />
+    <Compile Remove="Migrations\20190608173526_spec-number-seats.Designer.cs" />
   </ItemGroup>
 
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="NSwag.AspNetCore" Version="12.3.1" />
   </ItemGroup>
 

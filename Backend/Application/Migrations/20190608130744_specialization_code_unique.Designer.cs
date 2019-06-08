@@ -4,14 +4,16 @@ using Application.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Application.Migrations
 {
     [DbContext(typeof(NonStopContext))]
-    partial class NonStopContextModelSnapshot : ModelSnapshot
+    [Migration("20190608130744_specialization_code_unique")]
+    partial class specialization_code_unique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,13 +27,11 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("DocumentId");
-
                     b.Property<int?>("DocumentTypeId");
 
                     b.Property<byte[]>("Image");
 
-                    b.Property<int>("PersonId");
+                    b.Property<int?>("PersonId");
 
                     b.HasKey("Id");
 
@@ -53,21 +53,6 @@ namespace Application.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DocumentType");
-                });
-
-            modelBuilder.Entity("Application.Models.Feedback", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Comment");
-
-                    b.Property<int>("UnivercityId");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("Application.Models.Person", b =>
@@ -126,9 +111,9 @@ namespace Application.Migrations
 
                     b.Property<int?>("SpecializationId");
 
-                    b.Property<int>("Status");
-
                     b.Property<int?>("UnivercityId");
+
+                    b.Property<bool>("Verified");
 
                     b.HasKey("Id");
 
@@ -151,8 +136,6 @@ namespace Application.Migrations
                         .IsRequired();
 
                     b.Property<string>("Name");
-
-                    b.Property<int>("NumberSeats");
 
                     b.Property<int?>("UnivercityId");
 
@@ -225,7 +208,7 @@ namespace Application.Migrations
 
                     b.HasIndex("SpecializationId");
 
-                    b.ToTable("UnivercitySpecializations");
+                    b.ToTable("UnivercitySpecialization");
                 });
 
             modelBuilder.Entity("Application.Models.Document", b =>
@@ -236,8 +219,7 @@ namespace Application.Migrations
 
                     b.HasOne("Application.Models.Person", "Person")
                         .WithMany("Documents")
-                        .HasForeignKey("PersonId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PersonId");
                 });
 
             modelBuilder.Entity("Application.Models.Person", b =>
