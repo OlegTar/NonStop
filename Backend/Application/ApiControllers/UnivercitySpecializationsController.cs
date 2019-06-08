@@ -25,14 +25,14 @@ namespace Application.ApiControllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UnivercitySpecialization>>> GetUnivercitySpecialization()
         {
-            return await _context.UnivercitySpecialization.ToListAsync();
+            return await _context.UnivercitySpecializations.ToListAsync();
         }
 
         // GET: api/UnivercitySpecializations/5
         [HttpGet("{id}")]
         public async Task<ActionResult<UnivercitySpecialization>> GetUnivercitySpecialization(int id)
         {
-            var univercitySpecialization = await _context.UnivercitySpecialization.FindAsync(id);
+            var univercitySpecialization = await _context.UnivercitySpecializations.FindAsync(id);
 
             if (univercitySpecialization == null)
             {
@@ -76,7 +76,7 @@ namespace Application.ApiControllers
         [HttpPost]
         public async Task<ActionResult<UnivercitySpecialization>> PostUnivercitySpecialization(UnivercitySpecialization univercitySpecialization)
         {
-            _context.UnivercitySpecialization.Add(univercitySpecialization);
+            _context.UnivercitySpecializations.Add(univercitySpecialization);
             try
             {
                 await _context.SaveChangesAsync();
@@ -100,13 +100,13 @@ namespace Application.ApiControllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<UnivercitySpecialization>> DeleteUnivercitySpecialization(int id)
         {
-            var univercitySpecialization = await _context.UnivercitySpecialization.FindAsync(id);
+            var univercitySpecialization = await _context.UnivercitySpecializations.FindAsync(id);
             if (univercitySpecialization == null)
             {
                 return NotFound();
             }
 
-            _context.UnivercitySpecialization.Remove(univercitySpecialization);
+            _context.UnivercitySpecializations.Remove(univercitySpecialization);
             await _context.SaveChangesAsync();
 
             return univercitySpecialization;
@@ -114,7 +114,7 @@ namespace Application.ApiControllers
 
         private bool UnivercitySpecializationExists(int id)
         {
-            return _context.UnivercitySpecialization.Any(e => e.UnivercityId == id);
+            return _context.UnivercitySpecializations.Any(e => e.UnivercityId == id);
         }
     }
 }

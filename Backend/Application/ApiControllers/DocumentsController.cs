@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Application.Context;
 using Application.Models;
+using AutoMapper;
+using Application.ViewModels;
 
 namespace Application.ApiControllers
 {
@@ -15,17 +17,27 @@ namespace Application.ApiControllers
     public class DocumentsController : ControllerBase
     {
         private readonly NonStopContext _context;
+        private readonly IMapper _mapper;
 
         public DocumentsController(NonStopContext context)
         {
             _context = context;
+
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<MapperProfile>();
+            });
+            _mapper = config.CreateMapper();
         }
 
         // GET: api/Documents
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Document>>> GetDocuments()
+        public async Task<ActionResult<IEnumerable<DocumentViewModel>>> GetDocuments()
         {
-            return await _context.Documents.ToListAsync();
+            var documents = await _context.Documents.ToListAsync();
+            var documentViewModels = _mapper.Map<List<DocumentViewModel>>(documents);
+
+            return documentViewModels;
         }
 
         // GET: api/Documents/5
@@ -74,12 +86,14 @@ namespace Application.ApiControllers
 
         // POST: api/Documents
         [HttpPost]
-        public async Task<ActionResult<Document>> PostDocument(Document document)
+        public async Task<ActionResult<DocumentViewModel>> PostDocument(DocumentViewModel documentViewModel)
         {
+            var document = _mapper.Map<Document>(documentViewModel);
+
             _context.Documents.Add(document);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDocument", new { id = document.Id }, document);
+            return CreatedAtAction("GetDocument", new { id = document.Id }, documentViewModel);
         }
 
         // DELETE: api/Documents/5
