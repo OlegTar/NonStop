@@ -1,3 +1,5 @@
 .section {
-    margin: 50px 200px;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px; 
 }

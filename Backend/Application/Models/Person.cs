@@ -15,5 +15,8 @@ namespace Application.Models
         public Univercity Univercity { get; set; }
 
         public IList<Document> Documents { get; set; }
+        public string IdInOAuthProvider { get; set; }
+        public string Avatar { get; set; }
+        public string SessionId { get; set; }
     }
 }

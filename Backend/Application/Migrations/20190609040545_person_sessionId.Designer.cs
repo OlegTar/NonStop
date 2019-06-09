@@ -4,14 +4,16 @@ using Application.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Application.Migrations
 {
     [DbContext(typeof(NonStopContext))]
-    partial class NonStopContextModelSnapshot : ModelSnapshot
+    [Migration("20190609040545_person_sessionId")]
+    partial class person_sessionId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,17 +78,25 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Avatar");
+
                     b.Property<DateTime>("BirthDate");
+
+                    b.Property<string>("IdInOAuthProvider");
 
                     b.Property<string>("Name");
 
                     b.Property<string>("PatronymicName");
+
+                    b.Property<string>("SessionId");
 
                     b.Property<string>("Surname");
 
                     b.Property<int?>("UnivercityId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdInOAuthProvider");
 
                     b.HasIndex("UnivercityId");
 
@@ -226,16 +236,10 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AverageScore");
-
                     b.Property<string>("Description");
-
-                    b.Property<int>("MinScore");
 
                     b.Property<string>("Name")
                         .IsRequired();
-
-                    b.Property<string>("Site");
 
                     b.HasKey("Id");
 

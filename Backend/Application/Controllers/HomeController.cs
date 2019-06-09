@@ -5,6 +5,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Application.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using System.Web;
 
 namespace Application.Controllers
 {
@@ -18,6 +20,18 @@ namespace Application.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login(string redirectUri, string sessionId)
+        {
+            HttpContext.Items.Add("sessionId", sessionId);
+            var authProperties = new AuthenticationProperties(new Dictionary<string, string>() {
+                {"sessionId", sessionId }
+            }) {
+                RedirectUri = redirectUri
+            };
+            return Challenge(authProperties);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
