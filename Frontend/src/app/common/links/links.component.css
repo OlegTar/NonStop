@@ -1,7 +1,7 @@
 .Row {
     display: flex;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 30px;
 }
 .Column {
     flex: 0 50%;
@@ -12,6 +12,9 @@
     margin: 50px 50px;
 }
 
-a a:hover, a:visited, a:link, a:active{
+a a:hover, a:visited, a:link, a:active, a.image-link:focus {
     text-decoration: none;
+    outline: 0;
+    font-family: Century Gothic;
+    color: #EDECE8;
 }

@@ -8,3 +8,13 @@
 .InfoColumn {
     flex: 0 40%;
 }
+
+.container {
+    font-family: Century Gothic;
+    color: #EDECE8;
+    background-color: rgb(63, 81, 181);
+}
+
+.block {
+    margin-top: 15px;
+}
