@@ -19,6 +19,7 @@ import { GeneralComponent } from './general/general.component';
 import { LoginComponent } from './login/login.component';
 import { CommisionComponent } from './commision/commision.component';
 import { DataService } from './service/data.service';
+import { ProfileComponent } from './profile/profile.component';
 
 const appRoutes: Routes = [
   { path: 'general', component: GeneralComponent },
@@ -27,6 +28,7 @@ const appRoutes: Routes = [
   { path: 'rating', component: RatingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'commision', component: CommisionComponent },
+  { path: 'profile', component: ProfileComponent },
 ];
 
 @NgModule({
@@ -44,6 +46,7 @@ const appRoutes: Routes = [
     GeneralComponent,
     LoginComponent,
     CommisionComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
