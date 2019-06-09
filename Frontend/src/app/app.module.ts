@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { CommisionComponent } from './commision/commision.component';
 import { DataService } from './service/data.service';
 import { ProfileComponent } from './profile/profile.component';
+import { CookieService } from 'ngx-cookie-service';
 import { UniversityDetailsComponent } from './university/university-details/university-details.component';
 import { PointsBySubjectComponent } from './points-by-subject/points-by-subject.component';
 
@@ -71,7 +72,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    DataService
+    DataService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

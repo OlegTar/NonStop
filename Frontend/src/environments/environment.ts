@@ -6,7 +6,8 @@ const ApiUrl = 'https://localhost:44314/';
 
 export const environment = {
   production: false,
-  getUniversities: ApiUrl + 'api/Univercities'
+  getUniversities: ApiUrl + 'api/Univercities',
+  getPerson: ApiUrl + 'api/People/session/'
 };
 
 /*
