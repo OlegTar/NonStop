@@ -27,7 +27,14 @@ import { PointsBySubjectComponent } from './points-by-subject/points-by-subject.
 const appRoutes: Routes = [
   { path: '', component: GeneralComponent },
   { path: 'general', component: GeneralComponent },
-  { path: 'university', component: UniversityComponent },
+  {
+    path: 'university', component: UniversityComponent,
+    // children: [
+    //   {
+    //     path: ':id', component: UniversityDetailsComponent
+    //   }
+    // ]
+  },
   { path: 'university/:id', component: UniversityDetailsComponent },
   { path: 'mydocs', component: DocumentsComponent },
   { path: 'rating', component: RatingComponent },
