@@ -20,6 +20,7 @@ import { LoginComponent } from './login/login.component';
 import { CommisionComponent } from './commision/commision.component';
 import { DataService } from './service/data.service';
 import { ProfileComponent } from './profile/profile.component';
+import { CookieService } from 'ngx-cookie-service';
 import { UniversityDetailsComponent } from './university/university-details/university-details.component';
 import { PointsBySubjectComponent } from './points-by-subject/points-by-subject.component';
 import { AboutUniversityComponent } from './about-university/about-university.component';
@@ -27,7 +28,14 @@ import { AboutUniversityComponent } from './about-university/about-university.co
 const appRoutes: Routes = [
   { path: '', component: GeneralComponent },
   { path: 'general', component: GeneralComponent },
-  { path: 'university', component: UniversityComponent },
+  {
+    path: 'university', component: UniversityComponent,
+    // children: [
+    //   {
+    //     path: ':id', component: UniversityDetailsComponent
+    //   }
+    // ]
+  },
   { path: 'university/:id', component: UniversityDetailsComponent },
   { path: 'mydocs', component: DocumentsComponent },
   { path: 'rating', component: RatingComponent },
@@ -66,7 +74,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    DataService
+    DataService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

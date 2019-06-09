@@ -41,7 +41,7 @@ export class UniversityListComponent implements OnInit, OnDestroy {
   }
 
   navigateTo(id) {
-    this.router.navigateByUrl('/univesity/' + id);
+    this.router.navigateByUrl('/university/' + id);
   }
 
   ngOnDestroy() {

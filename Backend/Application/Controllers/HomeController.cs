@@ -25,6 +25,7 @@ namespace Application.Controllers
         [HttpGet]
         public IActionResult Login(string redirectUri, string sessionId)
         {
+            //SignOut();
             HttpContext.Items.Add("sessionId", sessionId);
             var authProperties = new AuthenticationProperties(new Dictionary<string, string>() {
                 {"sessionId", sessionId }
