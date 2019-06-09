@@ -5,11 +5,11 @@
         <mat-icon>close</mat-icon>
       </button>
     </section>
-    <section class="Exit">
-      Выйти
+    <section class="Exit" *ngIf="person">
+      <a href="/" (click)="logout();$event.preventDefault()">Выйти</a>
     </section>
-    <section class="User">
-      {{person$ | async}} 
+    <section class="User" *ngIf="person">
+      {{person.name + " " + person.surname}} 
     </section>
     <app-links></app-links>
   </mat-sidenav>
@@ -22,7 +22,11 @@
         <span class="spacer"></span>
         <img src="../../../assets/logo2.png"/>
         <span class="spacer"></span>
-        <a routerLink="/login">Войти</a>
+        <a routerLink="/login" *ngIf="!person">Войти</a>
+        <ng-container *ngIf="person">
+          <img [src]="person.avatar" class="avatar">
+          <a href="/" (click)="logout();$event.preventDefault()" >Выйти</a>
+        </ng-container>
       </mat-toolbar-row>
     </mat-toolbar>
   </mat-sidenav-content>

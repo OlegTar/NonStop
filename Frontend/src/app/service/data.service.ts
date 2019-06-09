@@ -19,8 +19,5 @@ export class DataService {
 
   getPersonBySession(sessionId: string): Observable<Person> {
     return this.httpClient.get<Person>(environment.getPerson + encodeURIComponent(sessionId))
-      .pipe(
-        catchError(() => throwError({}))
-      );
   }
 }

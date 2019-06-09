@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     const d = new Date();
     d.setTime(d.getTime() + 3600000);
     this.cookie.set('sessionId', sessionId, d);
+    // localStorage.setItem('setItem', sessionId);
     const redirectUri = window.location.href.replace(/^(https?:\/\/)(.*?)\/.*$/, '$1$2');
 
     console.log('https://localhost:44314/Home/Login?redirectUri=' +
@@ -32,5 +33,12 @@ export class LoginComponent implements OnInit {
 
     window.location.href = 'https://localhost:44314/Home/Login?redirectUri=' +
     encodeURIComponent(redirectUri) + '&sessionId=' + encodeURIComponent(sessionId);
+
+    // const img = new Image();
+    // img.src = 'https://localhost:44314/Home/Login?redirectUri=' +
+    // encodeURIComponent(redirectUri) + '&sessionId=' + encodeURIComponent(sessionId);
+
+    // this.router.navigateByUrl('https://localhost:44314/Home/Login?redirectUri=' +
+    // encodeURIComponent(redirectUri) + '&sessionId=' + encodeURIComponent(sessionId));
   }
 }
