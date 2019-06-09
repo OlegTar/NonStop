@@ -1,7 +1,7 @@
 <div class="grid-container">
-  <mat-grid-list cols="2" rowHeight="250px">
+  <mat-grid-list cols="2" rowHeight="330px">
     <mat-grid-tile *ngFor="let u of universities" [colspan]="2" [rowspan]="1">
-      <mat-card class="dashboard-card">
+      <mat-card class="dashboard-card" (click)="navigateTo(u.id)">
         <mat-card-header>
           <mat-card-title>
             {{u.name}}
@@ -20,13 +20,30 @@
             <label *ngIf="i < u.specializations.length">, </label>
           </label>
           <section class="Row">
+              <section class="Column">
+                Средний балл: {{u.averageScore}}
+              </section>
+              <section class="Column">
+                Минимальный балл: {{u.minScore}}
+              </section>
+              <section class="Column">
+                  <button mat-button>
+                    <mat-icon>chat_bubble_outline</mat-icon>
+                    20
+                  </button>
+              </section>
+          </section>
+          <section class="Row">
             <section class="Column">
-              <button mat-raised-button color="primary">Перейти на сайт</button>
+              <button mat-raised-button class="go-btn" (click)="goTo(u.site)">
+                <span>Перейти на сайт </span>
+                <mat-icon>directions_walk</mat-icon>
+              </button>
             </section>
             <section class="Column">
-              <button mat-button>
+              <button mat-raised-button class="add-btn">
+                <span>Добавить в сравнение  </span>
                 <mat-icon>star_border</mat-icon>
-                <span>Добавить в сравнение</span>
               </button>
             </section>
           </section>

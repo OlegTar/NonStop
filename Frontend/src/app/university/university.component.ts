@@ -6,12 +6,7 @@ import { University } from '../model/university';
   templateUrl: './university.component.html',
   styleUrls: ['./university.component.css']
 })
-export class UniversityComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+export class UniversityComponent {
 
   
 }

@@ -20,10 +20,13 @@ import { LoginComponent } from './login/login.component';
 import { CommisionComponent } from './commision/commision.component';
 import { DataService } from './service/data.service';
 import { ProfileComponent } from './profile/profile.component';
+import { UniversityDetailsComponent } from './university/university-details/university-details.component';
 
 const appRoutes: Routes = [
+  { path: '', component: GeneralComponent },
   { path: 'general', component: GeneralComponent },
   { path: 'university', component: UniversityComponent },
+  { path: 'university/:id', component: UniversityDetailsComponent },
   { path: 'mydocs', component: DocumentsComponent },
   { path: 'rating', component: RatingComponent },
   { path: 'login', component: LoginComponent },
@@ -47,6 +50,7 @@ const appRoutes: Routes = [
     LoginComponent,
     CommisionComponent,
     ProfileComponent,
+    UniversityDetailsComponent,
   ],
   imports: [
     BrowserModule,

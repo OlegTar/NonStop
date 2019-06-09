@@ -28,6 +28,16 @@
 }
 
 .Column {
-    flex: 0 20%;
+    flex: 0 25%;
     cursor: pointer;
+}
+
+.add-btn {
+    color: #ffffff !important;
+    background-color: #034488 !important;
+}
+
+.go-btn {
+    color: #ffffff !important;
+    background-color: #178fd6 !important;
 }
