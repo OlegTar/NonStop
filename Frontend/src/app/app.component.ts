@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Frontend';
+  title = 'Онлайн абитуриент';
 
   constructor(private cookie: CookieService) {
   }

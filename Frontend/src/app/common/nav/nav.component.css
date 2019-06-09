@@ -18,6 +18,12 @@
 .spacer {
     flex: 1 1 auto;
 }
+a a:hover, a:visited, a:link, a:active, a.image-link:focus {
+    text-decoration: none;
+    outline: 0;
+    font-family: Century Gothic;
+    color: #EDECE8;
+}
 
 .Row
 {
