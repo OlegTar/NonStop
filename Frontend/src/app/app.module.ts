@@ -20,6 +20,8 @@ import { LoginComponent } from './login/login.component';
 import { CommisionComponent } from './commision/commision.component';
 import { DataService } from './service/data.service';
 import { ProfileComponent } from './profile/profile.component';
+import { PointsBySubjectComponent } from './points-by-subject/points-by-subject.component';
+
 
 const appRoutes: Routes = [
   { path: 'general', component: GeneralComponent },
@@ -29,6 +31,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'commision', component: CommisionComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'points-by-subject', component: PointsBySubjectComponent },
 ];
 
 @NgModule({
@@ -47,6 +50,7 @@ const appRoutes: Routes = [
     LoginComponent,
     CommisionComponent,
     ProfileComponent,
+    PointsBySubjectComponent,
   ],
   imports: [
     BrowserModule,
