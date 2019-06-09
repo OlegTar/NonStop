@@ -27,7 +27,7 @@ namespace Application.Migrations
 
                     b.Property<int>("DocumentId");
 
-                    b.Property<int?>("DocumentTypeId");
+                    b.Property<int>("DocumentTypeId");
 
                     b.Property<byte[]>("Image");
 
@@ -226,10 +226,16 @@ namespace Application.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AverageScore");
+
                     b.Property<string>("Description");
+
+                    b.Property<int>("MinScore");
 
                     b.Property<string>("Name")
                         .IsRequired();
+
+                    b.Property<string>("Site");
 
                     b.HasKey("Id");
 
@@ -255,7 +261,8 @@ namespace Application.Migrations
                 {
                     b.HasOne("Application.Models.DocumentType", "DocumentType")
                         .WithMany()
-                        .HasForeignKey("DocumentTypeId");
+                        .HasForeignKey("DocumentTypeId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Application.Models.Person", "Person")
                         .WithMany("Documents")

@@ -10,6 +10,10 @@ namespace Application.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string Site { get; set; }
+
+        public int MinScore { get; set; }
+        public int AverageScore { get; set; }
         public IList<Specialization> Specializations { get; set; }
     }
 }
