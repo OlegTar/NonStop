@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Application.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Application.Controllers
 {
@@ -18,6 +19,12 @@ namespace Application.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Login(string returnUrl = "/")
+        {
+            return Challenge(new AuthenticationProperties() { RedirectUri = returnUrl });
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
