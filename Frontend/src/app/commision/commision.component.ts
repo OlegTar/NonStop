@@ -10,21 +10,23 @@ export class CommisionComponent implements OnInit {
   ngOnInit() {
   }
   selected = 'Факультет 1';
-  displayedColumns: string[] = ['position', 'surname', 'name', 'patronymic', 'nameSpecialization', 'numberPoints'];
+  displayedColumns: string[] = ['position', 'surname', 'numberPoints'];
   dataSource = ELEMENT_DATA;
 }
 export interface PeriodicElement {
   position: Number;
   surname: string;
-  name: string;
-  patronymic: string;
-  nameSpecialization: string;
-  numberPoints: string;
+  numberPoints: Number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, surname: 'Иванов', name: 'Иван', patronymic: 'Иванович', nameSpecialization: 'Математика', numberPoints: '256'},
-  { position: 2, surname: 'Иванов', name: 'Иван', patronymic: 'Иванович', nameSpecialization: 'Биология', numberPoints: '230'},
-  { position: 3, surname: 'Иванов', name: 'Иван', patronymic: 'Иванович', nameSpecialization: 'Физика', numberPoints: '190'},
+  { position: 1, surname: 'Емельянова А.В.', numberPoints: 262 },
+  { position: 2, surname: 'Дуров Т.В.', numberPoints: 261 },
+  { position: 3, surname: 'Смирнов А.Е.',  numberPoints: 259 },
+  { position: 4, surname: 'Кузнецов В.Р.',  numberPoints: 259 },
+  { position: 5, surname: 'Попов Ч.С.',  numberPoints: 259 },
+  { position: 6, surname: 'Васильев З.Ш.',  numberPoints: 259 },
+  { position: 7, surname: 'Соколов П.М.',  numberPoints: 259 },
+  { position: 8, surname: 'Михайлов Ж.Х.',  numberPoints: 259 },
+  { position: 9, surname: 'Новиков В.А.',  numberPoints: 259 },
 ];
-

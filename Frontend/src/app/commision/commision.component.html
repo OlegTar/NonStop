@@ -1,5 +1,4 @@
-<form id="search-form-left" [formGroup]="form" (ngSubmit)="submit()">
-<mat-form-field>
+<mat-form-field style="margin-left: 30%; margin-top: 30px;">
   <mat-label>Выберете факультет</mat-label>
   <mat-select [(value)]="selected">
     <mat-option>Не выбрано</mat-option>
@@ -8,43 +7,31 @@
     <mat-option value="option3">Факультет 4</mat-option>
   </mat-select>
 </mat-form-field>
-</form>
-<form id="search-form-right" [formGroup]="form" (ngSubmit)="submit()">
-  <mat-form-field>
-    <mat-label>Выберете специальность</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option>Не выбрано</mat-option>
-      <mat-option value="option1">специальность 2</mat-option>
-      <mat-option value="option2">специальность 3</mat-option>
-      <mat-option value="option3">специальность 4</mat-option>
-    </mat-select>
-  </mat-form-field>
-  </form>
+<mat-form-field style="margin-left: 20%;">
+  <mat-label>Выберете специальность</mat-label>
+  <mat-select [(value)]="selected">
+    <mat-option>Не выбрано</mat-option>
+    <mat-option value="option1">специальность 2</mat-option>
+    <mat-option value="option2">специальность 3</mat-option>
+    <mat-option value="option3">специальность 4</mat-option>
+  </mat-select>
+</mat-form-field>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> № </th>
+    <th mat-header-cell *matHeaderCellDef> Место </th>
     <td mat-cell *matCellDef="let element"> {{element.position}} </td>
   </ng-container>
   <ng-container matColumnDef="surname">
-    <th mat-header-cell *matHeaderCellDef> Фамилия </th>
-    <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
-  </ng-container>
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Имя </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-  </ng-container>
-  <ng-container matColumnDef="patronymic">
-    <th mat-header-cell *matHeaderCellDef> Отчество </th>
-    <td mat-cell *matCellDef="let element"> {{element.patronymic}} </td>
-  </ng-container>
-  <ng-container matColumnDef="nameSpecialization">
-    <th mat-header-cell *matHeaderCellDef> Специальность </th>
-    <td mat-cell *matCellDef="let element"> {{element.nameSpecialization}} </td>
+    <th mat-header-cell *matHeaderCellDef > Фамилия </th>
+    <td mat-cell *matCellDef="let element"> <a href="" style="color: black; text-decoration: none;">{{element.surname}}</a> </td>
   </ng-container>
   <ng-container matColumnDef="numberPoints">
-    <th mat-header-cell *matHeaderCellDef> Количество баллов </th>
+    <th mat-header-cell *matHeaderCellDef > Количество баллов </th>
     <td mat-cell *matCellDef="let element"> {{element.numberPoints}} </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<div class="example-button-row" >
+  <button mat-flat-button color="primary" style="margin-top: 50px; margin-left: 44%; width: 10%;">Экспортировать в XLS</button>
+</div>
