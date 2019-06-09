@@ -4,6 +4,7 @@ import { Observable, Subscription } from 'rxjs';
 import { DataService } from 'src/app/service/data.service';
 import { map } from 'rxjs/operators';
 import { Specialization } from 'src/app/model/specialization';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-university-list',
@@ -17,12 +18,17 @@ export class UniversityListComponent implements OnInit, OnDestroy {
   
   constructor(
     protected dataService: DataService,
-    protected cdr: ChangeDetectorRef
+    protected cdr: ChangeDetectorRef,
+    protected router: Router
   ) { }
 
   ngOnInit() {
     this.sub = new Subscription();
     this.getData();
+  }
+
+  goTo(path: string) {
+    window.location.href = path;
   }
 
   private getData() {
@@ -32,6 +38,10 @@ export class UniversityListComponent implements OnInit, OnDestroy {
         this.cdr.markForCheck();
       })
     );
+  }
+
+  navigateTo(id) {
+    this.router.navigateByUrl('/univesity/' + id);
   }
 
   ngOnDestroy() {

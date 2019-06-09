@@ -21,15 +21,21 @@ import { CommisionComponent } from './commision/commision.component';
 import { DataService } from './service/data.service';
 import { ProfileComponent } from './profile/profile.component';
 import { CookieService } from 'ngx-cookie-service';
+import { UniversityDetailsComponent } from './university/university-details/university-details.component';
+import { PointsBySubjectComponent } from './points-by-subject/points-by-subject.component';
+
 
 const appRoutes: Routes = [
+  { path: '', component: GeneralComponent },
   { path: 'general', component: GeneralComponent },
   { path: 'university', component: UniversityComponent },
+  { path: 'university/:id', component: UniversityDetailsComponent },
   { path: 'mydocs', component: DocumentsComponent },
   { path: 'rating', component: RatingComponent },
   { path: 'login', component: LoginComponent },
   { path: 'commision', component: CommisionComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'points-by-subject', component: PointsBySubjectComponent },
 ];
 
 @NgModule({
@@ -48,6 +54,8 @@ const appRoutes: Routes = [
     LoginComponent,
     CommisionComponent,
     ProfileComponent,
+    UniversityDetailsComponent,
+    PointsBySubjectComponent,
   ],
   imports: [
     BrowserModule,
