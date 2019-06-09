@@ -22,7 +22,7 @@ import { DataService } from './service/data.service';
 import { ProfileComponent } from './profile/profile.component';
 import { UniversityDetailsComponent } from './university/university-details/university-details.component';
 import { PointsBySubjectComponent } from './points-by-subject/points-by-subject.component';
-
+import { AboutUniversityComponent } from './about-university/about-university.component';
 
 const appRoutes: Routes = [
   { path: '', component: GeneralComponent },
@@ -35,6 +35,7 @@ const appRoutes: Routes = [
   { path: 'commision', component: CommisionComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'points-by-subject', component: PointsBySubjectComponent },
+  { path: 'about-university', component: AboutUniversityComponent },
 ];
 
 @NgModule({
@@ -55,6 +56,7 @@ const appRoutes: Routes = [
     ProfileComponent,
     UniversityDetailsComponent,
     PointsBySubjectComponent,
+    AboutUniversityComponent,
   ],
   imports: [
     BrowserModule,
