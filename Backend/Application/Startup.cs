@@ -18,6 +18,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.EntityFrameworkCore.Storage;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application
 {
@@ -45,6 +49,11 @@ namespace Application
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddOpenApiDocument();
 
+            //services.AddScoped<Database>((provider) =>
+            //{
+            //    return new DatabaseWithMVCMiniProfiler("MainConnectionString");
+            //});
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -58,7 +67,8 @@ namespace Application
 
             options.ClientId = "7014754";
             options.ClientSecret = "ZkitGPqJoCoU1I3KCvg1";
-
+            
+            options.Scope.Add("openid");
             options.Scope.Add("photo_50");
 
             options.AuthorizationEndpoint = "https://oauth.vk.com/authorize";
@@ -69,7 +79,10 @@ namespace Application
             {
                 OnCreatingTicket = async context =>
                 {
-                    var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint + "&access_token=" + HttpUtility.UrlEncode(context.AccessToken) + "&fields=photo_50");
+                    var items = context.Properties.Items;
+
+                    var request = new HttpRequestMessage(HttpMethod.Get, context.Options.UserInformationEndpoint + "&access_token=" + HttpUtility.UrlEncode(context.AccessToken) 
+                        + "&fields=photo_50,bdate");
                     request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", context.AccessToken);
 
@@ -78,8 +91,33 @@ namespace Application
 
                     var str = await response.Content.ReadAsStringAsync();
                     var user = JsonConvert.DeserializeObject<VkViewModel>(str);
+                    var idInOAuthProvider = "VK_" + user.Response[0].Id;
+                    
+                    using (var dbContext = new NonStopContext())
+                    {
 
-                    //context.RunClaimActions(user);
+                        var person = dbContext.Persons.FirstOrDefault(p => p.IdInOAuthProvider == idInOAuthProvider);
+                        if (person == null)
+                        {
+                            var birthDateParts = user.Response[0].Birthdate.Split('.').Select(p => int.Parse(p)).ToList();
+
+                            dbContext.Persons.Add(new Models.Person()
+                            {
+                                Name = user.Response[0].FirstName,
+                                Surname = user.Response[0].LastName,
+                                Avatar = user.Response[0].Avatar,
+                                BirthDate = new DateTime(birthDateParts[2], birthDateParts[1], birthDateParts[0]),
+                                IdInOAuthProvider = idInOAuthProvider,
+                                SessionId = items["sessionId"]
+                            });
+                        }
+                        else
+                        {
+                            person.SessionId = items["sessionId"];
+                            dbContext.Entry(person).State = EntityState.Modified;
+                        }
+                        await dbContext.SaveChangesAsync();
+                    }
                 }
             };
         });

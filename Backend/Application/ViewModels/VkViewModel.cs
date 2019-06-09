@@ -21,5 +21,9 @@ namespace Application.ViewModels
         public string FirstName { get; set; }
         [JsonProperty("last_name")]
         public string LastName { get; set; }
+        [JsonProperty("photo_50")]
+        public string Avatar { get; set; }
+        [JsonProperty("bdate")]
+        public string Birthdate { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@using System.Web
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
@@ -9,7 +10,7 @@
 
 @if (!User.Identity.IsAuthenticated)
 {
-    <a asp-action="Login" asp-controller="Home" class="btn btn-default">Log In with VK</a>
+    <a href="/Home/Login?redirectUri=@Html.Raw(HttpUtility.UrlEncode("https://localhost:4200"))&sessionId=1234124" class="btn btn-default">Log In with VK</a>
 }
 else
 {

@@ -42,6 +42,19 @@ namespace Application.ApiControllers
             return person;
         }
 
+        [HttpGet("session/{sessionId}")]
+        public async Task<ActionResult<Person>> GetPersonBySession(string sessionId)
+        {
+            var person = await _context.Persons.FirstOrDefaultAsync(p => p.SessionId == sessionId);
+
+            if (person == null)
+            {
+                return NotFound();
+            }
+
+            return person;
+        }
+
         // PUT: api/People/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPerson(int id, Person person)

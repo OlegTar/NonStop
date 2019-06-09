@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Application.ViewModels;
 using Microsoft.AspNetCore.Authentication;
+using System.Web;
 
 namespace Application.Controllers
 {
@@ -22,9 +23,15 @@ namespace Application.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl = "/")
+        public IActionResult Login(string redirectUri, string sessionId)
         {
-            return Challenge(new AuthenticationProperties() { RedirectUri = returnUrl });
+            HttpContext.Items.Add("sessionId", sessionId);
+            var authProperties = new AuthenticationProperties(new Dictionary<string, string>() {
+                {"sessionId", sessionId }
+            }) {
+                RedirectUri = redirectUri
+            };
+            return Challenge(authProperties);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -24,6 +24,8 @@ namespace Application.Context
                 .HasAlternateKey(us => us.Name);
             modelBuilder.Entity<Specialization>()
                 .HasAlternateKey(sp => sp.Code);
+            modelBuilder.Entity<Person>()
+                .HasIndex(p => p.IdInOAuthProvider);
         }
 
         public DbSet<Person> Persons { get; set; }
